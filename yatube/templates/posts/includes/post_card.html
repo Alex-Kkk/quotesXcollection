@@ -10,12 +10,17 @@
     <img class="card-img my-2" src="{{ im.url }}" width="960" height="339" style="object-fit: none">
   {% endthumbnail %}
   <p>
-    {{ post.text|linebreaks|truncatewords:100 }}
-    <a href="{% url 'posts:post_detail' post.id %}">>> Читать далее >></a>
+    {{ post.text|linebreaks|truncatewords:100 }}<a href="{% url 'posts:post_detail' post.id %}">>> Читать далее >></a>
+  </p>
+  <p>
+    {% if post.comments.count %}
+      Комментариев: {{ post.comments.count }}
+    {% endif %}
   </p>
   {% if post.group and not group %}
+  Группа:
   <a href="{% url 'posts:group_list' post.group.slug %}">
-    все записи группы
+    {{post.group.title}}
   </a>
   {% endif %}
 </article>
