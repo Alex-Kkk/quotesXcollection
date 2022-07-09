@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+  {% if is_edit %}Редактировать запись{% else %}Добавить запись{% endif %}
+{% endblock %}
+{% block content %}
+<div class="container ">
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+      <h2>Профиль пользователя: {{user_pr.username}}</h2>
+      <p>Имя: {{user_pr.get_full_name}}</p>
+      <p><a href="{% url 'users:password_change' %}">Изменить пароль</a></p>
+      <p><a href="{% url 'users:logout' %}">Выйти</a></p>
+    </div> <!-- col -->
+</div> <!-- row -->
+{% endblock %} 

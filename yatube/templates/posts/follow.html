@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Подписки
+{% endblock %}  
+{% block content %}
+  <body>
+    <main> 
+      <div class="container py-2">     
+        {% include 'posts/includes/switcher.html' %}
+        <h1>Публикации Ваших любимых авторов</h1>
+        {% load cache %}
+        {% cache 20 follow_page page_obj.number %}
+          {% for post in page_obj %}
+            {% include 'posts/includes/post_card.html' %}
+            {% if not forloop.last %}<hr>{% endif %}
+          {%  endfor %}
+          {% include 'posts/includes/paginator.html' %}
+        {% endcache %}         
+      </div>  
+    </main> 
+  </body>
+{% endblock %}

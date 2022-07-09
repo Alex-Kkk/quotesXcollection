@@ -1,0 +1,13 @@
+<li class="list-group-item">
+  Всего постов автора: <span>{{ author.posts.count }}</span>
+</li>
+{% with author.following.count as subscribers %} {% if subscribers %}
+  <li class="list-group-item">  
+    Подписчиков: <span>{{ subscribers }}</span>
+  </li>
+{% endif %} {% endwith %}
+{% with author.follower.count as subscribed %} {% if subscribed %}
+  <li class="list-group-item">   
+    Подписок: <span>{{ subscribed }}</span>
+  </li>
+{% endif %} {% endwith %}

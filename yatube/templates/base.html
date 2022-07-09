@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'img/fav/fav.ico' %}" type="image">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/fav/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/fav/favicon-16x16.png' %}">
+    <meta name="msapplication-TileColor" content="#000">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <title>
+    {% block title %}
+    {% endblock %}
+  </title>
+  </head>
+  <body>
+    <style>
+      html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+    </style>
+    {% include 'includes/header.html' %}
+    <div class='row justify-content-center'>
+      <div class='col-m-8 col-lg-8'>
+        {% block content%}
+        {% endblock %}
+      </div>
+    </div>
+    {% include 'includes/footer.html' %}
+  </body>
+</html>

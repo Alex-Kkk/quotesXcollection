@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load static %}
+<div class="container py-5">
+  <article>
+  <h1>Привет, я автор</h1>
+    <p>
+      Тут могла быть еще одна история о попытке войти в айти после 30...
+      Но не будет!
+    </p>
+    <p>
+      Мне всегда было интересно программирование и IT, я просто делаю что мне нравится. Даже
+      когда кажется что все полимеры потеряны.
+    </p>
+  <p>
+    Картинка с котиком:
+  </p>
+  </article>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <img src="{% static 'img/coding_cat.jpg'%}"
+      class="img-fluid" alt="cat picture">
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %} 
