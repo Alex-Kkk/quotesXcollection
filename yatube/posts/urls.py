@@ -24,4 +24,7 @@ urlpatterns = [
     path('create/', views.post_create, name='post_create'),
     path('account/<str:username>', views.user_account, name='user_account'),
     path('', views.index, name='index'),
+    path(
+        'posts/<int:post_id>/like', views.LikeView.as_view(), name='like_post',
+    ),
 ]

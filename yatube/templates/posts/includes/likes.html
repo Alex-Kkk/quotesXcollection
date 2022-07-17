@@ -1,0 +1,42 @@
+{% load static %}
+
+<div style="float: right; ">
+    <a href="#" id="like" style="float: end;">
+      <img id="heart"
+      {% if liked %}
+        src="{% static 'img/heart-fill.svg' %}"
+        toggled="true"
+      {% else %}
+        src="{% static 'img/heart.svg' %}"
+        toggled="false"
+      {% endif %}
+      alt="Like" width="32" height="32">
+    </a>
+    {{ post.likes.all.count }}
+    
+  </div>
+  <br>
+
+  <script>
+    $('#like').click(function(){
+      if ($("#heart").attr('toggled') == 'true'){
+        $("#heart").attr('toggled', 'false');
+        $("#heart").attr('src', "{% static 'img/heart.svg' %}");
+      }
+      else {
+        $("#heart").attr('toggled', 'true');
+        $("#heart").attr('src', "{% static 'img/heart-fill.svg' %}");
+      } 
+      $.ajax({
+        type: "POST",
+        url: "{% url 'posts:like_post' post.id %}",
+        data: {'slug': $(this).attr('name'), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+        dataType: "json",
+        success: function(response) {
+      },
+          error: function(rs, e) {
+      }
+          }); 
+          return false;
+    })
+  </script>

@@ -104,3 +104,14 @@ class Follow(models.Model):
         ]
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
+
+
+class Like(models.Model):
+    user = models.ForeignKey(
+        User, related_name='liked',
+        on_delete=models.CASCADE, verbose_name='Кто поставил',
+    )
+    post = models.ForeignKey(
+        Post, related_name='likes',
+        on_delete=models.CASCADE, verbose_name='Лайкнутый пост',
+    )

@@ -6,8 +6,4 @@
     Подписчиков: <span>{{ subscribers }}</span>
   </li>
 {% endif %} {% endwith %}
-{% with author.follower.count as subscribed %} {% if subscribed %}
-  <li class="list-group-item">   
-    Подписок: <span>{{ subscribed }}</span>
-  </li>
-{% endif %} {% endwith %}
+

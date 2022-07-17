@@ -1,10 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views import View
+from django.http import HttpResponse
 
 from posts.forms import CommentForm, PostForm
-from posts.models import Follow, Group, Post
+from posts.models import Follow, Group, Post, Like
 from posts.utils import paginate
+
 
 POSTS_MAX: int = 10
 
@@ -59,10 +63,12 @@ def post_detail(request, post_id):
     )
     comments = post.comments.select_related('author')
     form = CommentForm()
+    liked = Like.objects.filter(user=request.user, post=post_id).exists()
     context = {
         'post': post,
         'form': form,
         'comments': comments,
+        'liked': liked,
     }
 
     return render(request, 'posts/post_detail.html', context)
@@ -165,3 +171,14 @@ def user_account(request, username):
     }
 
     return render(request, 'posts/user_account.html', context)
+
+
+class LikeView(LoginRequiredMixin, View):
+    def post(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        if Like.objects.filter(user=request.user, post=post).exists():
+            Like.objects.filter(user=request.user, post=post).delete()
+        else:
+            Like(user=request.user, post=post).save()
+
+        return HttpResponse()
