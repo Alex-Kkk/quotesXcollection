@@ -43,6 +43,7 @@
                 редактировать запись
               </a>
             {% endif %}
+            {% if user.is_athenticated %}
             <div style="float: right; ">
               <a href="#" id="like" style="float: end;">
                 <img id="heart"
@@ -59,7 +60,7 @@
               
             </div>
             <br>
-
+            {% endif %}
             {% include 'posts/includes/post_comments.html' %}
           </article>
         </div> 

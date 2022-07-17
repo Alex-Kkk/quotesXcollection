@@ -63,7 +63,11 @@ def post_detail(request, post_id):
     )
     comments = post.comments.select_related('author')
     form = CommentForm()
-    liked = Like.objects.filter(user=request.user, post=post_id).exists()
+    if request.user.is_authenticated:
+        liked = Like.objects.filter(user=request.user, post=post_id).exists()
+    else:
+        liked = False
+
     context = {
         'post': post,
         'form': form,
