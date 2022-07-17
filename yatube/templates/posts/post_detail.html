@@ -3,23 +3,23 @@
 
 {% block title %}
   Пост {{ post.text|truncatechars:30 }}
-{% endblock %} 
+{% endblock %}
 {% block content %}
 {% load thumbnail %}
-  <body> 
+  <body>
   </div>
-  </div>  
+  </div>
     <div class="row">
-      <div class="col"> 
+      <div class="col">
     <main>
       <div class="container py-5">
         <div class="row">
           <aside class="col-12 col-md-3">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                Дата публикации: {{ post.pub_date|date:"d E Y" }} 
-              </li> 
-              {% if post.group %}  
+                Дата публикации: {{ post.pub_date|date:"d E Y" }}
+              </li>
+              {% if post.group %}
                 <li class="list-group-item">
                   Группа: <a href="{% url 'posts:group_list' post.group.slug %}">{{ post.group.title }}</a>
                 </li>
@@ -39,8 +39,11 @@
             </p>
 
             {% if user == post.author %}
-              <a class="btn btn-primary mb-3" href="{% url 'posts:post_edit' post.id %}">
-                редактировать запись
+              <a class="btn btn-primary mb-3 " href="{% url 'posts:post_edit' post.id %}">
+                Редактировать запись
+              </a>
+              <a class="btn btn-danger mb-3 mx-3" href="{% url 'posts:post_delete' post.id %}">
+                Удалить
               </a>
             {% endif %}
             {% if user.is_authenticated %}
@@ -56,14 +59,12 @@
                 {% endif %}
                 alt="Like" width="32" height="32">
               </a>
-              {{ post.likes.all.count }}
-              
             </div>
             <br>
             {% endif %}
             {% include 'posts/includes/post_comments.html' %}
           </article>
-        </div> 
+        </div>
       </div>
     </main>
   </body>
@@ -77,7 +78,7 @@
       else {
         $("#heart").attr('toggled', 'true');
         $("#heart").attr('src', "{% static 'img/heart-fill.svg' %}");
-      } 
+      }
       $.ajax({
         type: "POST",
         url: "{% url 'posts:like_post' post.id %}",
@@ -87,7 +88,7 @@
       },
           error: function(rs, e) {
       }
-          }); 
+          });
           return false;
     })
   </script>

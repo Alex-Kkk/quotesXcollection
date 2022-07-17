@@ -186,3 +186,16 @@ class LikeView(LoginRequiredMixin, View):
             Like(user=request.user, post=post).save()
 
         return HttpResponse()
+
+
+@login_required
+def post_delete(request, post_id):
+    """Страница подтверждения удаления публикации."""
+    if request.method =="POST":
+        Post.objects.filter(author=request.user, pk=post_id).delete()
+
+        return redirect('posts:index')
+    context = {'post': Post.objects.get(pk=post_id)}
+
+    return render(request, 'posts/post_delete.html', context)
+

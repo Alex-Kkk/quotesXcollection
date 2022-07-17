@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Пост {{ post.text|truncatechars:30 }}
+{% endblock %}
+{% block content %}
+{% load thumbnail %}
+  <body>
+  </div>
+  </div>
+    <div class="row">
+      <div class="col">
+    <main>
+      <div class="container py-5">
+        <div class="row">
+          <h1>Удаление публикации</h1>
+          <h3>Вы собираетесь удалить публикацию:</h3>
+          <p>{{post.text|truncatewords:50}}</p>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit"  class="btn btn-danger" value="УДАЛИТЬ!">
+            <a href="{% url 'posts:post_detail' post.id %}" class="btn btn-secondary">Отмена</a>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+
+{% endblock %}

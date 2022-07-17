@@ -11,7 +11,7 @@
           {% if is_edit %}Редактирование{% else %}Новый пост{% endif %}
         </div>
         <div class="card-body">
-          {% include 'includes/form_errors.html' %}       
+          {% include 'includes/form_errors.html' %}
           <form method="post" action="
             {% if is_edit %}{% url 'posts:post_edit' post_id %}
             {% else %}{% url 'posts:post_create' %}{% endif %}"
@@ -21,7 +21,7 @@
               {% include 'includes/form_fields_render.html' %}
             {% endfor %}
             <div class="col text-end">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" class="btn btn-primary mt-3">
                 {% if is_edit %}Сохранить{% else %}Добавить{% endif %}
               </button>
             </div>
@@ -30,4 +30,4 @@
       </div> <!-- card -->
     </div> <!-- col -->
 </div> <!-- row -->
-{% endblock %} 
+{% endblock %}
