@@ -40,7 +40,7 @@
 
             {% if user == post.author %}
               <a class="btn btn-primary mb-3 " href="{% url 'posts:post_edit' post.id %}">
-                Редактировать запись
+                Редактировать
               </a>
               <a class="btn btn-danger mb-3 mx-3" href="{% url 'posts:post_delete' post.id %}">
                 Удалить

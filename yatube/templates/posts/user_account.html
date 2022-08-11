@@ -8,8 +8,10 @@
     <div class="col-md-8 p-5">
       <h2>Профиль пользователя: {{user_pr.username}}</h2>
       <p>Имя: {{user_pr.get_full_name}}</p>
+      <p>{% include 'posts/includes/author_stats.html' with author=user_pr %}</p>
+      <p><a href="{% url 'posts:profile' user_pr.username %}">Мои публикации</a></p>
       <p><a href="{% url 'users:password_change' %}">Изменить пароль</a></p>
       <p><a href="{% url 'users:logout' %}">Выйти</a></p>
     </div> <!-- col -->
 </div> <!-- row -->
-{% endblock %} 
+{% endblock %}

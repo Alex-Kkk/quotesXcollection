@@ -13,34 +13,29 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         {% with request.resolver_match.view_name as view_name %}
           <ul class="nav nav-pills">
-            <li class="nav-item"> 
-              <a class="nav-link 
-              {% if view_name  == 'about:author' %}active{% endif %}"
-              href="{% url 'about:author' %}">Об авторе</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link
-              {% if view_name  == 'about:tech' %}active{% endif %}"
-              href="{% url 'about:tech' %}">Технологии</a>
+              {% if view_name  == 'about:author' %}active{% endif %}"
+              href="{% url 'about:author' %}">О сайте</a>
             </li>
             {% if user.is_authenticated %}
-              <li class="nav-item"> 
+              <li class="nav-item">
                 <a class="nav-link
                 {% if view_name  == 'posts:post_create' %}active{% endif %}"
                 href="{% url 'posts:post_create' %}">Новая запись</a>
               </li>
-              <li class="nav-item"> 
+              <li class="nav-item">
                 <a class="nav-link link-light
                 {% if view_name  == 'posts:user_account' %}active{% endif %}"
                 href="{% url 'posts:user_account' user.username %}">{{ user.username }}</a>
               </li>
             {% else %}
-              <li class="nav-item"> 
+              <li class="nav-item">
                 <a class="nav-link link-light
                 {% if view_name  == 'users:login' %}active{% endif %}"
                 href="{% url 'users:login' %}">Войти</a>
               </li>
-              <li class="nav-item"> 
+              <li class="nav-item">
                 <a class="nav-link link-light
                 {% if view_name  == 'users:signup' %}active{% endif %}"
                 href="{% url 'users:signup' %}">Регистрация</a>
@@ -50,5 +45,5 @@
         </div>
       {% endwith %}
     </div>
-  </nav>      
+  </nav>
 </header>

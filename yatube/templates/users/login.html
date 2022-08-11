@@ -20,7 +20,7 @@
             {% include 'includes/form_fields_render.html' %}
           {% endfor %}
           <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary mt-3">
               Войти
             </button>
             <a href="{% url 'users:password_reset' %}" class="btn btn-link">
@@ -33,4 +33,4 @@
     </div>
   </div>
 </div>
-{% endblock %} 
+{% endblock %}
