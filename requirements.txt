@@ -27,3 +27,4 @@ toml==0.10.2
 typing-extensions==4.3.0
 urllib3==1.26.9
 zipp==3.8.0
+python-dotenv==1.0.0

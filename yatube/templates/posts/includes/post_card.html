@@ -3,11 +3,11 @@
 <article>
   <ul>
     <li>
-      Автор: <a href="{% url 'posts:profile' post.author.username %}">{{ post.author.get_full_name }}</a>
+      Добавил: <a href="{% url 'posts:profile' post.author.username %}">{{ post.author.get_full_name }}</a>
     </li>
     <li>Дата публикации: {{ post.pub_date|date:"d E Y" }}</li>
     {% if post.group and not group %}<li>
-    Группа:
+    Автор:
     <a href="{% url 'posts:group_list' post.group.slug %}">
       {{post.group.title}}
     </a>
